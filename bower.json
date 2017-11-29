@@ -1,0 +1,17 @@
+{
+  "name": "csc226-hw4",
+  "authors": [
+    "Niko Lagman <Lagman.Niko@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
