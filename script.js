@@ -29,6 +29,7 @@ $(document).ready(function () {
   });
 
   $('#submit').on('click', function () {
+    $("#records").find("tr:gt(0)").remove();
     var page_name = null;
     var remote_host = null;
     var start_date = null;
@@ -45,6 +46,9 @@ $(document).ready(function () {
 
     query(page_name, remote_host, start_date, end_date, function (err, results) {
       if (err) alert(err);
+      else {
+        populate(results);
+      }
     });
   });
 
@@ -61,6 +65,20 @@ $(document).ready(function () {
       params.end_date = end_date;
     $.get( "api.php", params, function( data ) {
       callback(null, data);
+    });
+  }
+
+  function populate (rows) {
+    $.each(rows, function(i, item) {
+        var $tr = $('<tr>').append(
+            $('<td>').text(item.page_name),
+            $('<td>').text(item.visit_date),
+            $('<td>').text(item.visit_time),
+            $('<td>').text(item.previous_page),
+            $('<td>').text(item.request_method),
+            $('<td>').text(item.remote_host),
+            $('<td>').text(item.remote_port)
+        ).appendTo('#records');
     });
   }
 
